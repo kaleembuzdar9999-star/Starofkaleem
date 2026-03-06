@@ -1,19 +1,41 @@
-<script>
-    function registerStudent() {
-        const student = {
-            id: Date.now(),
-            name: document.getElementById('sName').value,
-            father: document.getElementById('fName').value,
-            class: document.getElementById('sClass').value,
-            phone: document.getElementById('sPhone').value,
-            feeStatus: 'Unpaid'
-        };
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission | Star of Kaleem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 p-6 font-sans">
+    <div class="max-w-xl mx-auto bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border">
+        <div class="bg-indigo-600 p-6 text-white text-center">
+            <h1 class="text-2xl font-bold">New Admission</h1>
+        </div>
+        <div class="p-8 space-y-4">
+            <input type="text" id="name" placeholder="Student Name" class="w-full p-4 border rounded-2xl outline-none focus:ring-2 ring-indigo-500">
+            <input type="text" id="class" placeholder="Class" class="w-full p-4 border rounded-2xl outline-none focus:ring-2 ring-indigo-500">
+            <input type="tel" id="phone" placeholder="Parent Contact" class="w-full p-4 border rounded-2xl outline-none focus:ring-2 ring-indigo-500">
+            <button onclick="saveStudent()" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold shadow-lg">Register Now</button>
+            <button onclick="window.location.href='admin.html'" class="w-full text-slate-400 text-sm py-2">Back to Dashboard</button>
+        </div>
+    </div>
 
-        let students = JSON.parse(localStorage.getItem('students')) || [];
-        students.push(student);
-        localStorage.setItem('students', JSON.stringify(students));
-        
-        alert('Student Registered Successfully!');
-        window.location.href = 'directory.html'; // اگلے پیج پر لے جائے گا
-    }
-</script>
+    <script>
+        function saveStudent() {
+            const name = document.getElementById('name').value;
+            const sClass = document.getElementById('class').value;
+            const phone = document.getElementById('phone').value;
+
+            if(!name || !sClass) return alert('Please fill all fields');
+
+            const student = { name, class: sClass, phone, fee: 'Unpaid' };
+            let students = JSON.parse(localStorage.getItem('students')) || [];
+            students.push(student);
+            localStorage.setItem('students', JSON.stringify(students));
+
+            alert('Student Registered!');
+            window.location.href = 'directory.html';
+        }
+    </script>
+</body>
+</html>
