@@ -1,63 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admission Form | Star of Kaleem</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Poppins', sans-serif; }</style>
-</head>
-<body class="bg-slate-100 p-4 md:p-10">
+<script>
+    function registerStudent() {
+        const student = {
+            id: Date.now(),
+            name: document.getElementById('sName').value,
+            father: document.getElementById('fName').value,
+            class: document.getElementById('sClass').value,
+            phone: document.getElementById('sPhone').value,
+            feeStatus: 'Unpaid'
+        };
 
-    <div class="max-w-3xl mx-auto bg-white rounded-[2rem] shadow-2xl overflow-hidden">
-        <div class="bg-indigo-600 p-6 text-white flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-bold">Student Admission</h1>
-                <p class="text-xs text-indigo-200 uppercase tracking-widest">New Entry - Session 2026</p>
-            </div>
-            <button onclick="window.location.href='admin.html'" class="bg-white/20 px-4 py-2 rounded-lg text-sm hover:bg-white/30 transition">Back</button>
-        </div>
-
-        <form class="p-8 space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Student Full Name</label>
-                    <input type="text" placeholder="Enter name" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Father Name</label>
-                    <input type="text" placeholder="Enter father name" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Select Class</label>
-                    <select class="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none appearance-none">
-                        <option>Nursery</option>
-                        <option>Prep</option>
-                        <option>Class 1</option>
-                        <option>Class 10</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Parent Contact</label>
-                    <input type="tel" placeholder="03xx-xxxxxxx" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition">
-                </div>
-            </div>
-
-            <div>
-                <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Home Address</label>
-                <textarea rows="2" placeholder="Enter complete address" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition"></textarea>
-            </div>
-
-            <button type="button" onclick="alert('Admission Successful!')" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition transform active:scale-95">
-                Register Student Now
-            </button>
-        </form>
-    </div>
-
-    <footer class="text-center mt-10 text-slate-400 text-xs tracking-widest uppercase">
-        System Property: Star of Kaleem
-    </footer>
-
-</body>
-                  </html>
+        let students = JSON.parse(localStorage.getItem('students')) || [];
+        students.push(student);
+        localStorage.setItem('students', JSON.stringify(students));
+        
+        alert('Student Registered Successfully!');
+        window.location.href = 'directory.html'; // اگلے پیج پر لے جائے گا
+    }
+</script>
